@@ -1,6 +1,23 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect, useState } from 'react';
+import axios from 'axios';
 
-export default class home extends Component {
+function Homepage() {
+  const [output, setOutput] = useState([]);
+    useEffect(() => {
+      axios.get('https://api.publicapis.org/entries')
+        .then(response => {
+          console.log(response.data.entries);
+          setOutput(response.data.entries);
+          setOutput('UWU')
+        }
+      );
+    },
+
+    []);
+
+}
+
+ export default class homepage extends Component {
   render() {
     return (
       <div>
