@@ -1,9 +1,24 @@
-import React, { Component } from 'react'
+import React, { Component, useState } from 'react';
+import { Form } from 'react-router-dom';
+
+const fields = [
+  { label: 'Email Address', type: 'text', placeholder: 'Input Email' },
+  { label: 'Password', type: 'password', placeholder: 'Password' },
+];
+
+const handleSubmit = (e) => {
+  e.preventDefault();
+  console.log(e);
+}
+
+
+const [email, setEmail] = useState('');
+const [password, setPassword] = useState('');
 
 export default class register extends Component {
   render() {
-    return (
-      <div>
+    return (      
+        <div>
         <section class="vh-100 gradient-custom">
         <div class="container py-5 h-100">
           <div class="row justify-content-center align-items-center h-100">
@@ -70,8 +85,8 @@ export default class register extends Component {
                       <div class="col-md-6 mb-4 pb-2">
 
                         <div class="form-outline">
-                          <input type="email" id="emailAddress" class="form-control form-control-lg" />
-                          <label class="form-label" for="emailAddress">Email</label>
+                          <input type="email" id="email" class="form-control form-control-lg" />
+                          <label class="form-label" for="email">Email</label>
                         </div>
 
                       </div>
@@ -89,10 +104,10 @@ export default class register extends Component {
                       <div class="col-12">
 
                         <select class="select form-control-lg">
-                          <option value="1" disabled>Choose option</option>
-                          <option value="2">Subject 1</option>
-                          <option value="3">Subject 2</option>
-                          <option value="4">Subject 3</option>
+                          <option value="1" disabled>Select option: </option>
+                          <option value="2">Apple</option>
+                          <option value="3">Banana</option>
+                          <option value="4">Mango</option>
                         </select>
                         <label class="form-label select-label">Choose option</label>
 
@@ -101,8 +116,30 @@ export default class register extends Component {
 
                     <div class="mt-4 pt-2">
                       <input class="btn btn-primary btn-lg" type="submit" value="Submit" />
+                      return (
+                    <Form onSubmit={handleSubmit}>                        
+                        {fields.map((field) => {
+                          return (
+                            <Form.Group classname="mb-3" controlId="formBasicEmail" key={field.label}>
+                              <Form.Label>{field.label}</Form.Label>
+                              <Form.Control
+                                type={field.type}
+                                placeholder={field.placeholder}
+                                onChange={(e) => {
+                                  if(field.label === 'Email') {
+                                    setEmail(e.target.value);
+                                  }
+                                  if(field.label === 'Password') {
+                                    setPassword(e.target.value);
+                                  }
+                                }}
+                              />
+                            </Form.Group>
+                          )
+                        })}
+                    </Form>                     
+                  )                        
                     </div>
-
                   </form>
                 </div>
               </div>
@@ -110,7 +147,7 @@ export default class register extends Component {
           </div>
         </div>
       </section>
-      </div>
-    )
-  }
+      </div>    
+    )         
+  }   
 }

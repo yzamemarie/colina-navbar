@@ -1,8 +1,26 @@
-import React, { Component } from 'react'
+import React, { Component, setState} from 'react';
+import { Form } from 'react-router-dom';
+
+const fields = [
+  { label: 'Email Address', type: 'text', placeholder: 'Input Email' },
+  { label: 'Password', type: 'password', placeholder: 'Password' },
+];
+
+const handleSubmit = (e) => {
+  e.preventDefault();
+  console.log(e);
+}
+
+// eslint-disable-next-line
+const [email, setEmail] = setState('');
+// eslint-disable-next-line
+const [password, setPassword] = setState('');
 
 export default class login extends Component {
+  
   render() {
-    return (
+    return (    
+
       <div>
         <section class="vh-100" >
         <div class="container py-5 h-100">
@@ -28,13 +46,36 @@ export default class login extends Component {
                     <label class="form-check-label" for="form1Example3"> Remember password </label>
                   </div>
 
-                  <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
+                  <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>                  
+                  return (
+                    <Form onSubmit={handleSubmit}>                        
+                        {fields.map((field) => {
+                          return (
+                            <Form.Group classname="mb-3" controlId="formBasicEmail" key={field.label}>
+                              <Form.Label>{field.label}</Form.Label>
+                              <Form.Control
+                                type={field.type}
+                                placeholder={field.placeholder}
+                                onChange={(e) => {
+                                  if(field.label === 'Email') {
+                                    setEmail(e.target.value);
+                                  }
+                                  if(field.label === 'Password') {
+                                    setPassword(e.target.value);
+                                  }
+                                }}
+                              />
+                            </Form.Group>
+                          )
+                        })}
+                    </Form>                     
+                  )
 
                   <hr class="my-4"/>
 
                   <button class="btn btn-lg btn-block btn-primary" type="submit"><i class="fab fa-google me-2"></i> Sign in with google</button>
                   <button class="btn btn-lg btn-block btn-primary mb-2" type="submit"><i class="fab fa-facebook-f me-2"></i>Sign in with facebook</button>
-
+                  
                 </div>
               </div>
             </div>

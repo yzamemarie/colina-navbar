@@ -18,7 +18,7 @@ function App() {
         <Route path="/Register" element={<Register/>}></Route>
       </Routes>
     </>
-  );
+  );  
 }
 
 export default App;
