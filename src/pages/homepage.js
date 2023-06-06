@@ -15,15 +15,13 @@ function Homepage() {
 
     []);
 
-}
-
- export default class homepage extends Component {
-  render() {
     return (
       <div>
-      <h2 align="center"> WELCOME! </h2>
-      <img src="./wasted_junjun.png" className="wasted" alt="waste junjun"/>
+        <h2 align="center"> WELCOME! </h2>
+        <img src="./wasted_junjun.png" className="wasted" alt="waste junjun"/>
       </div>
     )
-  }
+
 }
+
+export default Homepage;

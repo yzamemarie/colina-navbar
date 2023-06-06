@@ -8,6 +8,8 @@ import Homepage from './pages/homepage';
 import Login from './pages/login';
 import Register from './pages/register';
 
+
+
 function App() {
   return (
     <>
@@ -18,7 +20,9 @@ function App() {
         <Route path="/Register" element={<Register/>}></Route>
       </Routes>
     </>
-  );  
+  );    
+
 }
+           
 
 export default App;
